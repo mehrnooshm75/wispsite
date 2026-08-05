@@ -7,17 +7,27 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      /* پالت سرمه‌ای و صورتی */
-      --bg-main: #fffcfd;
+      /* پالت اصلی: سرمه‌ای عمیق و صورتی‌های روشن و گرم */
+      --bg-main: #fff0f5;
       --bg-card: #ffffff;
       --text-navy: #0f172a;
       --text-muted: #475569;
-      --accent-pink: #f43f5e;
+      
+      --accent-pink-main: #f43f5e;
       --accent-pink-hover: #e11d48;
-      --accent-pink-light: #fff1f2;
-      --border-color: #f1f5f9;
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+      --accent-pink-soft: #ffe4e6;
+      --accent-pink-light: #fff5f7;
+      
+      --border-color: #fecdd3;
+      --shadow-sm: 0 2px 8px rgba(244, 63, 94, 0.06);
+      --shadow-md: 0 12px 24px -6px rgba(244, 63, 94, 0.12);
+
+      /* رنگ‌های اختصاصی سرویس‌ها */
+      --brand-castbox: #f55b23;
+      --brand-spotify: #1ed760;
+      --brand-apple: #a855f7;
+      --brand-telegram: #0088cc;
+      --brand-instagram: #e1306c;
     }
 
     * {
@@ -50,8 +60,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 0;
-      border-bottom: 2px solid var(--text-navy);
+      padding: 24px 0;
+      border-bottom: 2px solid var(--accent-pink-main);
       margin-bottom: 40px;
     }
 
@@ -62,15 +72,16 @@
     }
 
     .podcast-logo {
-      width: 70px;
-      height: 70px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--accent-pink);
+      border: 3px solid var(--accent-pink-main);
+      box-shadow: var(--shadow-sm);
     }
 
     .brand-title {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 900;
       color: var(--text-navy);
       letter-spacing: -0.5px;
@@ -84,13 +95,14 @@
 
     .site-badge {
       display: inline-block;
-      background-color: var(--accent-pink-light);
-      color: var(--accent-pink);
+      background-color: var(--accent-pink-soft);
+      color: var(--accent-pink-main);
       font-weight: 800;
       font-size: 0.85rem;
-      padding: 6px 18px;
+      padding: 6px 20px;
       border-radius: 50px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border-color);
     }
 
     .hero-tagline {
@@ -113,10 +125,10 @@
     .btn-platform {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: var(--bg-card);
-      border: 1px solid #cbd5e1;
-      padding: 10px 20px;
+      border: 1px solid var(--border-color);
+      padding: 10px 22px;
       border-radius: 30px;
       font-size: 0.95rem;
       font-weight: 700;
@@ -126,16 +138,65 @@
     }
 
     .btn-platform:hover {
-      border-color: var(--accent-pink);
-      color: var(--accent-pink);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
 
-    .btn-donate {
-      background: var(--accent-pink);
+    /* استایل اختصاصی دکمه‌ها با رنگ لوگوی پادگیرها */
+    .btn-platform.castbox {
+      color: var(--brand-castbox);
+      border-color: #ffd8cc;
+    }
+    .btn-platform.castbox:hover {
+      background-color: var(--brand-castbox);
       color: #ffffff;
-      border-color: var(--accent-pink);
+      border-color: var(--brand-castbox);
+    }
+
+    .btn-platform.spotify {
+      color: #15803d;
+      border-color: #bbf7d0;
+    }
+    .btn-platform.spotify:hover {
+      background-color: var(--brand-spotify);
+      color: #ffffff;
+      border-color: var(--brand-spotify);
+    }
+
+    .btn-platform.apple {
+      color: var(--brand-apple);
+      border-color: #e9d5ff;
+    }
+    .btn-platform.apple:hover {
+      background-color: var(--brand-apple);
+      color: #ffffff;
+      border-color: var(--brand-apple);
+    }
+
+    .btn-platform.telegram {
+      color: var(--brand-telegram);
+      border-color: #bae6fd;
+    }
+    .btn-platform.telegram:hover {
+      background-color: var(--brand-telegram);
+      color: #ffffff;
+      border-color: var(--brand-telegram);
+    }
+
+    .btn-platform.instagram {
+      color: var(--brand-instagram);
+      border-color: #fbcfe8;
+    }
+    .btn-platform.instagram:hover {
+      background-color: var(--brand-instagram);
+      color: #ffffff;
+      border-color: var(--brand-instagram);
+    }
+
+    .btn-donate {
+      background: var(--accent-pink-main);
+      color: #ffffff;
+      border-color: var(--accent-pink-main);
     }
 
     .btn-donate:hover {
@@ -144,14 +205,15 @@
       border-color: var(--accent-pink-hover);
     }
 
-    /* Bio Banner (Lost Women Style) */
+    /* Bio Banner */
     .bio-card {
-      background: var(--accent-pink-light);
-      border-right: 6px solid var(--accent-pink);
-      border-radius: 12px;
+      background: var(--accent-pink-soft);
+      border-right: 6px solid var(--accent-pink-main);
+      border-radius: 16px;
       padding: 32px;
       text-align: right;
       margin-bottom: 60px;
+      box-shadow: var(--shadow-sm);
     }
 
     .bio-card h3 {
@@ -197,7 +259,7 @@
     .episode-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -208,14 +270,14 @@
     .episode-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-md);
-      border-color: #fecdd3;
+      border-color: var(--accent-pink-main);
     }
 
     .cover-container {
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
-      background-color: #f8fafc;
+      background-color: var(--accent-pink-soft);
     }
 
     .cover-img {
@@ -226,7 +288,7 @@
     }
 
     .episode-card:hover .cover-img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     .card-content {
@@ -239,7 +301,7 @@
     .ep-number {
       font-size: 0.85rem;
       font-weight: 800;
-      color: var(--accent-pink);
+      color: var(--accent-pink-main);
       margin-bottom: 8px;
     }
 
@@ -276,10 +338,10 @@
     }
 
     .btn-details:hover {
-      background: var(--accent-pink);
+      background: var(--accent-pink-main);
     }
 
-    /* Modal / Dedicated View */
+    /* Modal / Popup */
     .modal {
       display: none;
       position: fixed;
@@ -287,7 +349,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(5px);
       z-index: 1000;
       justify-content: center;
@@ -297,13 +359,14 @@
 
     .modal-content {
       background: var(--bg-card);
-      border-radius: 20px;
+      border-radius: 24px;
       max-width: 720px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
       padding: 36px;
       position: relative;
+      border: 2px solid var(--border-color);
     }
 
     .close-btn {
@@ -319,12 +382,12 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: #f1f5f9;
+      background: var(--accent-pink-soft);
     }
 
     .close-btn:hover {
-      background: #e2e8f0;
-      color: var(--text-navy);
+      background: var(--accent-pink-main);
+      color: #ffffff;
     }
 
     .modal-body h2 {
@@ -376,11 +439,11 @@
       
       <!-- Socials & Platforms -->
       <div class="platforms-wrap">
-        <a href="https://castbox.fm/channel/id6681421" target="_blank" class="btn-platform"><i class="fa-solid fa-podcast"></i> CastBox</a>
-        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575" target="_blank" class="btn-platform"><i class="fa-brands fa-apple"></i> Apple Podcast</a>
-        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" class="btn-platform"><i class="fa-brands fa-spotify"></i> Spotify</a>
-        <a href="https://t.me/wispodcast" target="_blank" class="btn-platform"><i class="fa-brands fa-telegram"></i> تلگرام</a>
-        <a href="https://www.instagram.com/women_in_science_podcast?igsh=a2Q3YWQzMWM2MTdn&utm_source=qr" target="_blank" class="btn-platform"><i class="fa-brands fa-instagram"></i> اینستاگرام</a>
+        <a href="https://castbox.fm/channel/id6681421" target="_blank" class="btn-platform castbox"><i class="fa-solid fa-podcast"></i> CastBox</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575" target="_blank" class="btn-platform apple"><i class="fa-brands fa-apple"></i> Apple Podcast</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" class="btn-platform spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
+        <a href="https://t.me/wispodcast" target="_blank" class="btn-platform telegram"><i class="fa-brands fa-telegram"></i> تلگرام</a>
+        <a href="https://www.instagram.com/women_in_science_podcast?igsh=a2Q3YWQzMWM2MTdn&utm_source=qr" target="_blank" class="btn-platform instagram"><i class="fa-brands fa-instagram"></i> اینستاگرام</a>
         <a href="https://hamibash.com/wisp" target="_blank" class="btn-platform btn-donate"><i class="fa-solid fa-heart"></i> حمایت مالی (حامی‌باش)</a>
       </div>
 
@@ -406,7 +469,7 @@
             <img src="ep0.jpg" alt="کاور اپیزود صفرم" class="cover-img">
           </div>
           <div class="card-content">
-            <span class="ep-number">اپیزود صفرم </span>
+            <span class="ep-number">اپیزود ۰</span>
             <h3 class="ep-title">چرا زنان در علم؟ (معرفی پادکست)</h3>
             <p class="ep-summary">تاریخ علم همیشه آن‌طور که اتفاق افتاده، روایت نشده است. در اپیزود صفر پادکست «زنان در علم»، ما به پیش‌درآمد و مأموریت اصلی این پادکست روایی می‌پردازیم.</p>
             <button class="btn-details" onclick="openModal('ep0')">توضیحات بیشتر و شنیدن <i class="fa-solid fa-arrow-left"></i></button>
@@ -427,9 +490,9 @@
         
         <h4>شنیدن این اپیزود:</h4>
         <div class="platforms-wrap" style="justify-content: flex-start; margin-top: 10px;">
-          <a href="https://castbox.fm/channel/id6681421" target="_blank" class="btn-platform">CastBox</a>
-          <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" class="btn-platform">Spotify</a>
-          <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575" target="_blank" class="btn-platform">Apple Podcast</a>
+          <a href="https://castbox.fm/channel/id6681421" target="_blank" class="btn-platform castbox"><i class="fa-solid fa-podcast"></i> CastBox</a>
+          <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" class="btn-platform spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
+          <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575" target="_blank" class="btn-platform apple"><i class="fa-brands fa-apple"></i> Apple Podcast</a>
         </div>
 
         <h4>منابع و مقالات:</h4>
