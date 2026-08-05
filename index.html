@@ -7,16 +7,17 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #fcfcfc;
+      /* پالت سرمه‌ای و صورتی */
+      --bg-main: #fffcfd;
       --bg-card: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --accent-navy: #1e293b;
-      --accent-coral: #e11d48;
-      --accent-coral-hover: #be123c;
-      --border-color: #e2e8f0;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08);
+      --text-navy: #0f172a;
+      --text-muted: #475569;
+      --accent-pink: #f43f5e;
+      --accent-pink-hover: #e11d48;
+      --accent-pink-light: #fff1f2;
+      --border-color: #f1f5f9;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -28,7 +29,7 @@
 
     body {
       background-color: var(--bg-main);
-      color: var(--text-primary);
+      color: var(--text-navy);
       line-height: 1.8;
       padding-bottom: 80px;
     }
@@ -39,52 +40,65 @@
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Header & Hero Section */
-    header {
-      padding: 50px 0 40px;
-      border-bottom: 1px solid var(--border-color);
-      text-align: center;
+    /* Top Navigation / Branding Bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 2px solid var(--text-navy);
+      margin-bottom: 40px;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .podcast-logo {
-      width: 120px;
-      height: 120px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--accent-pink);
+    }
+
+    .brand-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-navy);
+      letter-spacing: -0.5px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 50px;
     }
 
     .site-badge {
       display: inline-block;
-      background-color: #ffe4e6;
-      color: var(--accent-coral);
-      font-weight: 700;
+      background-color: var(--accent-pink-light);
+      color: var(--accent-pink);
+      font-weight: 800;
       font-size: 0.85rem;
-      padding: 4px 16px;
+      padding: 6px 18px;
       border-radius: 50px;
       margin-bottom: 16px;
     }
 
-    .podcast-title {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: var(--accent-navy);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
     .hero-tagline {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      max-width: 750px;
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      max-width: 780px;
       margin: 0 auto 32px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Platform & Social Buttons */
@@ -92,7 +106,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 40px;
     }
 
@@ -101,54 +115,54 @@
       align-items: center;
       gap: 8px;
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid #cbd5e1;
       padding: 10px 20px;
-      border-radius: 8px;
+      border-radius: 30px;
       font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--accent-navy);
+      font-weight: 700;
+      color: var(--text-navy);
       box-shadow: var(--shadow-sm);
       transition: all 0.25s ease;
     }
 
     .btn-platform:hover {
-      border-color: var(--accent-navy);
+      border-color: var(--accent-pink);
+      color: var(--accent-pink);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
 
     .btn-donate {
-      background: var(--accent-coral);
+      background: var(--accent-pink);
       color: #ffffff;
-      border-color: var(--accent-coral);
+      border-color: var(--accent-pink);
     }
 
     .btn-donate:hover {
-      background: var(--accent-coral-hover);
+      background: var(--accent-pink-hover);
       color: #ffffff;
-      border-color: var(--accent-coral-hover);
+      border-color: var(--accent-pink-hover);
     }
 
-    /* Bio Banner */
+    /* Bio Banner (Lost Women Style) */
     .bio-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-right: 5px solid var(--accent-coral);
+      background: var(--accent-pink-light);
+      border-right: 6px solid var(--accent-pink);
       border-radius: 12px;
-      padding: 30px;
+      padding: 32px;
       text-align: right;
-      box-shadow: var(--shadow-sm);
+      margin-bottom: 60px;
     }
 
     .bio-card h3 {
       font-size: 1.3rem;
-      color: var(--accent-navy);
+      color: var(--text-navy);
       margin-bottom: 12px;
       font-weight: 800;
     }
 
     .bio-card p {
-      color: var(--text-secondary);
+      color: var(--text-muted);
       font-size: 1.05rem;
       margin-bottom: 10px;
     }
@@ -157,27 +171,26 @@
       margin-bottom: 0;
     }
 
-    /* Archive Section */
-    .archive-section {
-      margin-top: 50px;
-    }
-
+    /* Archive Section Header */
     .section-header {
-      margin-bottom: 30px;
-      border-bottom: 2px solid var(--accent-navy);
-      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      border-bottom: 2px solid var(--text-navy);
+      padding-bottom: 12px;
     }
 
     .section-title {
       font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--accent-navy);
+      font-weight: 900;
+      color: var(--text-navy);
     }
 
     .episodes-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
     }
 
     /* Episode Cards */
@@ -193,25 +206,31 @@
     }
 
     .episode-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-md);
+      border-color: #fecdd3;
     }
 
     .cover-container {
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
-      background-color: #f1f5f9;
+      background-color: #f8fafc;
     }
 
     .cover-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .episode-card:hover .cover-img {
+      transform: scale(1.03);
     }
 
     .card-content {
-      padding: 20px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -220,42 +239,47 @@
     .ep-number {
       font-size: 0.85rem;
       font-weight: 800;
-      color: var(--accent-coral);
-      margin-bottom: 6px;
+      color: var(--accent-pink);
+      margin-bottom: 8px;
     }
 
     .ep-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent-navy);
-      margin-bottom: 10px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-navy);
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
 
     .ep-summary {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 24px;
       flex-grow: 1;
     }
 
     .btn-details {
       width: 100%;
-      background: var(--accent-navy);
+      background: var(--text-navy);
       color: #ffffff;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 30px;
       font-weight: 700;
       font-size: 0.9rem;
       cursor: pointer;
       border: none;
       transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .btn-details:hover {
-      background: var(--accent-coral);
+      background: var(--accent-pink);
     }
 
-    /* Modal / Popup */
+    /* Modal / Dedicated View */
     .modal {
       display: none;
       position: fixed;
@@ -263,7 +287,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(5px);
       z-index: 1000;
       justify-content: center;
@@ -273,24 +297,24 @@
 
     .modal-content {
       background: var(--bg-card);
-      border-radius: 16px;
-      max-width: 700px;
+      border-radius: 20px;
+      max-width: 720px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
-      padding: 35px;
+      padding: 36px;
       position: relative;
     }
 
     .close-btn {
       position: absolute;
-      top: 15px;
-      left: 15px;
+      top: 20px;
+      left: 20px;
       font-size: 1.5rem;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       cursor: pointer;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -300,31 +324,33 @@
 
     .close-btn:hover {
       background: #e2e8f0;
+      color: var(--text-navy);
     }
 
     .modal-body h2 {
       font-size: 1.6rem;
-      color: var(--accent-navy);
-      margin-bottom: 15px;
+      color: var(--text-navy);
+      margin-bottom: 16px;
+      line-height: 1.3;
     }
 
     .modal-body p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      margin-bottom: 15px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
     }
 
     .modal-body h4 {
-      font-size: 1.05rem;
-      color: var(--accent-navy);
-      margin: 24px 0 10px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 5px;
+      font-size: 1.1rem;
+      color: var(--text-navy);
+      margin: 28px 0 12px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 6px;
     }
 
     .modal-body ul {
       padding-right: 20px;
-      color: var(--text-secondary);
+      color: var(--text-muted);
     }
 
     .modal-body li {
@@ -335,12 +361,17 @@
 <body>
 
   <div class="container">
-    <!-- Header -->
-    <header>
-      <img src="images/logo.png" alt="لوگوی زنان در علم" class="podcast-logo">
-      <br>
-      <span class="site-badge">پادکست روایی</span>
-      <h1 class="podcast-title">زنان در علم</h1>
+    <!-- Top Branding Bar -->
+    <div class="top-bar">
+      <div class="brand-logo-wrap">
+        <img src="images/logo.png" alt="لوگوی زنان در علم" class="podcast-logo">
+        <h1 class="brand-title">زنان در علم</h1>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <span class="site-badge">پادکست روایی تاریخ علم</span>
       <p class="hero-tagline">احیای تاریخ: زنانی که علم را دگرگون کردند</p>
       
       <!-- Socials & Platforms -->
@@ -359,7 +390,7 @@
         <p>این پادکست نقطه‌ی پیوند تاریخ علم و هنر قصه‌گویی است. ما در قالب پرونده‌های بیوگرافیک، تحلیل مقالات و مرور کتاب‌های علمی، سرگذشت زنانی را روایت می‌کنیم که علم امروز وام‌دار تاب‌آوری و تلاش آن‌هاست.</p>
         <p>کاوشی روان، دقیق و ملموس در صداقت علمی و جسارت انسانی.</p>
       </div>
-    </header>
+    </section>
 
     <!-- Episodes Archive -->
     <main class="archive-section">
@@ -378,7 +409,7 @@
             <span class="ep-number">اپیزود ۰</span>
             <h3 class="ep-title">چرا زنان در علم؟ (معرفی پادکست)</h3>
             <p class="ep-summary">تاریخ علم همیشه آن‌طور که اتفاق افتاده، روایت نشده است. در اپیزود صفر پادکست «زنان در علم»، ما به پیش‌درآمد و مأموریت اصلی این پادکست روایی می‌پردازیم.</p>
-            <button class="btn-details" onclick="openModal('ep0')">توضیحات بیشتر و شنیدن</button>
+            <button class="btn-details" onclick="openModal('ep0')">توضیحات بیشتر و شنیدن <i class="fa-solid fa-arrow-left"></i></button>
           </div>
         </article>
 
