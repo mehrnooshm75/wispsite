@@ -79,7 +79,7 @@
     flex-shrink:0;
   }
   .brand-name{ font-family:'Noto Serif Arabic',serif; font-weight:800; font-size:1.15rem; }
-  .header-links{ display:flex; gap:18px; font-size:1.05rem; color:var(--forest); }
+  .header-links{ display:flex; gap:18px; font-size:1.05rem; color:var(--forest); flex-wrap:wrap; }
   .header-links a{ transition:color .2s; }
   .header-links a:hover{ color:var(--coral); }
 
@@ -206,6 +206,7 @@
     display:flex; align-items:center; justify-content:center;
     padding:34px;
     border-left:1px dashed var(--line);
+    position:relative;
   }
   .file-cover img{
     width:100%; aspect-ratio:1; object-fit:cover;
@@ -222,6 +223,7 @@
     transform:rotate(-14deg);
     opacity:.9;
     line-height:1.3;
+    pointer-events:none;
   }
   .file-body{ padding:52px 40px 44px 44px; }
   .file-title{ font-size:1.7rem; color:var(--forest-dk); margin-bottom:16px; line-height:1.4; }
@@ -277,7 +279,7 @@
     width:100%; aspect-ratio:1; object-fit:cover; border-radius:4px; margin-bottom:16px;
     filter:saturate(.92);
   }
-  .index-title{ font-size:1.08rem; color:var(--forest-dk); margin-bottom:14px; min-height:2.6em; }
+  .index-title{ font-size:1.08rem; color:var(--forest-dk); margin-bottom:14px; min-height:2.6em; line-height:1.4; }
   .index-cta{ font-size:.85rem; font-weight:700; color:var(--coral); display:flex; align-items:center; gap:6px; }
   .index-cta i{ transition:transform .2s; }
   .index-card:hover .index-cta i{ transform:translateX(-4px); }
@@ -286,33 +288,77 @@
     margin-top:36px; text-align:center; color:var(--ink-soft); font-size:.95rem;
   }
 
-  /* ---------- mission / support ---------- */
-  .mission{
-    background:var(--forest-dk); color:var(--paper);
+  /* ---------- about ---------- */
+  .about-section{
     padding:90px 6%;
+    background:var(--paper-alt);
+    border-block:1px solid var(--line);
   }
-  .mission-inner{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
-  .mission h2{ font-size:1.9rem; margin-bottom:20px; }
-  .mission p{ color:#d7ddd6; max-width:56ch; margin-bottom:18px; }
-  .mission-card{
-    background:rgba(246,239,220,0.06);
-    border:1px solid rgba(246,239,220,0.2);
+  .about-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:40px;
+    box-shadow:0 10px 20px var(--paper-shadow);
+  }
+  .about-card h2{ color:var(--forest-dk); font-size:1.8rem; margin-bottom:18px; }
+  .about-card p{ color:var(--ink-soft); font-size:1.05rem; leading-height:1.9; }
+
+  /* ---------- donation ---------- */
+  .donation-section{ padding:90px 6%; }
+  .donation-inner{ display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:start; }
+  .donation-info h2{ font-size:1.8rem; color:var(--forest-dk); margin-bottom:16px; }
+  .donation-info p{ color:var(--ink-soft); margin-bottom:20px; font-size:1.02rem; }
+  .donation-list{ list-style:none; margin-bottom:30px; }
+  .donation-list li{ display:flex; align-items:center; gap:10px; margin-bottom:12px; font-weight:600; color:var(--forest); }
+  .donation-list li i{ color:var(--coral); }
+  
+  .donation-box{
+    background:var(--paper-alt);
+    border:1px solid var(--line);
     border-radius:8px;
     padding:32px;
   }
-  .mission-card h3{ font-size:1.2rem; margin-bottom:12px; color:#f3b98e; }
-  .mission-card p{ font-size:.95rem; margin-bottom:22px; }
-  .social-row{ display:flex; gap:14px; }
-  .social-row a{
-    width:42px; height:42px; border-radius:50%;
-    background:rgba(246,239,220,0.1);
-    display:flex; align-items:center; justify-content:center;
-    transition:background .2s, transform .2s;
+  .donation-box h3{ font-size:1.2rem; color:var(--forest-dk); margin-bottom:16px; }
+  .donation-methods{ display:flex; flex-direction:column; gap:16px; }
+  .method-item{ background:var(--paper); padding:16px; border-radius:6px; border:1px solid var(--line); }
+  .method-item h4{ font-size:.98rem; color:var(--forest); margin-bottom:4px; }
+  .method-item p{ font-size:.88rem; color:var(--ink-soft); margin:0; }
+
+  /* ---------- connect & socials ---------- */
+  .connect-section{
+    background:var(--forest-dk); color:var(--paper);
+    padding:90px 6%;
   }
-  .social-row a:hover{ background:var(--coral); transform:translateY(-3px); }
+  .connect-title{ font-size:1.8rem; margin-bottom:36px; text-align:center; color:var(--paper); }
+  .connect-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;
+  }
+  .connect-card{
+    background:rgba(246,239,220,0.06);
+    border:1px solid rgba(246,239,220,0.18);
+    border-radius:8px;
+    padding:28px;
+    display:flex; flex-direction:column; gap:12px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .connect-card:hover{
+    background:rgba(246,239,220,0.12);
+    transform:translateY(-4px);
+  }
+  .connect-icon{
+    font-size:1.8rem; color:#f3b98e; margin-bottom:6px;
+  }
+  .connect-card h3{ font-size:1.2rem; }
+  .connect-card p{ font-size:.9rem; color:#d7ddd6; flex-grow:1; }
+  .connect-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; font-size:.9rem; color:var(--coral);
+    margin-top:8px;
+  }
 
   @media (max-width:800px){
-    .mission-inner{ grid-template-columns:1fr; }
+    .donation-inner{ grid-template-columns:1fr; }
     .hero-inner{ grid-template-columns:1fr; }
     .seal-wrap{ order:-1; }
   }
@@ -342,13 +388,13 @@
     background:var(--paper-alt); color:var(--forest-dk);
     display:flex; align-items:center; justify-content:center; font-size:1.2rem;
   }
-  .modal-content h2{ color:var(--forest-dk); font-size:1.4rem; margin-bottom:14px; padding-left:40px; }
-  .modal-content p{ color:var(--ink-soft); margin-bottom:18px; }
+  .modal-content h2{ color:var(--forest-dk); font-size:1.3rem; margin-bottom:14px; padding-left:40px; line-height:1.4; }
+  .modal-content p{ color:var(--ink-soft); margin-bottom:18px; font-size:.95rem; }
   .modal-content h4{
     font-size:1rem; color:var(--forest); margin:22px 0 12px;
     border-bottom:1px solid var(--line); padding-bottom:6px;
   }
-  .modal-content ul{ padding-inline-start:22px; color:var(--ink-soft); }
+  .modal-content ul{ padding-inline-start:22px; color:var(--ink-soft); font-size:.92rem; }
   .modal .platform-row .btn-platform{
     background:var(--paper-alt); border-color:var(--line); color:var(--forest-dk);
   }
@@ -365,7 +411,9 @@
     <nav class="header-links">
       <a href="#latest">تازه‌ترین</a>
       <a href="#archive">آرشیو</a>
-      <a href="#mission">درباره پادکست</a>
+      <a href="#about">درباره پادکست</a>
+      <a href="#donate">حمایت مالی</a>
+      <a href="#connect">ارتباط با ما</a>
     </nav>
   </header>
 
@@ -386,7 +434,7 @@
           <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575" target="_blank" rel="noopener" class="btn-platform"><i class="fa-brands fa-apple"></i> اپل پادکست</a>
           <a href="https://t.me/wispodcast" target="_blank" rel="noopener" class="btn-platform"><i class="fa-brands fa-telegram"></i> تلگرام</a>
           <a href="https://www.instagram.com/women_in_science_podcast" target="_blank" rel="noopener" class="btn-platform"><i class="fa-brands fa-instagram"></i> اینستاگرام</a>
-          <a href="https://hamibash.com/wisp" target="_blank" rel="noopener" class="btn-platform donate"><i class="fa-solid fa-heart"></i> حمایت مالی</a>
+          <a href="#donate" class="btn-platform donate"><i class="fa-solid fa-heart"></i> حمایت مالی</a>
         </div>
       </div>
 
@@ -407,21 +455,22 @@
       <h2 class="section-title reveal">اپیزودی که همین حالا می‌توانید بشنوید</h2>
 
       <div class="file-card reveal">
-        <span class="file-tab">پرونده ۰۰۰</span>
+        <span class="file-tab">پرونده ۱۳.۵</span>
         <div class="file-cover">
           <div class="stamp">منتشر<br>شده</div>
-          <img src="ep0.jpg" alt="کاور اپیزود صفر">
+          <img src="ep13.5.jpg" alt="کاور اپیزود سیزده و نیم">
         </div>
         <div class="file-body">
-          <h3 class="file-title">چرا زنان در علم؟ (معرفی پادکست)</h3>
+          <h3 class="file-title">پیش‌پرده: پرونده استثناها</h3>
           <p class="file-desc">
-            تاریخ علم آکنده از کشفیاتی است که دنیای ما را تغییر داده، اما روایت رسمی آن همیشه با حذف یا کم‌رنگ کردن سهم زنان همراه بوده. در این پیش‌درآمد از انگیزه‌ها و مأموریت اصلی پادکست می‌گوییم.
+            در این قسمت کوتاه (پیش‌پرده)، به استقبال پرونده جدید پادکست می‌رویم؛ کتاب «استثناها» (The Exceptions) اثر کیت زرنیک. داستان نانسی هاپکینز و ۱۵ زن دانشمند دیگر که تصمیم گرفتند سقف شیشه‌ای آکادمی را بشکنند.
           </p>
           <div class="file-meta">
-            <span class="chip">اپیزود ۰</span>
-            <span class="chip">معرفی</span>
+            <span class="chip">اپیزود ۱۳.۵</span>
+            <span class="chip">پیش‌پرده</span>
+            <span class="chip">استثناها</span>
           </div>
-          <button class="btn btn-forest" onclick="openModal('ep0')"><i class="fa-solid fa-play"></i> شنیدن این اپیزود</button>
+          <button class="btn btn-forest" onclick="openModal('ep13_5')"><i class="fa-solid fa-play"></i> شنیدن این اپیزود</button>
         </div>
       </div>
     </div>
@@ -434,43 +483,207 @@
       <h2 class="section-title reveal">پرونده‌های تاکنون گشوده‌شده</h2>
 
       <div class="archive-grid">
+        <!-- EP 0 -->
         <div class="index-card reveal" onclick="openModal('ep0')">
           <div class="index-num">پرونده ۰۰۰</div>
-          <img src="ep0.jpg" alt="کاور اپیزود صفر">
+          <img src="ep0.jpg" alt="کاور اپیزود ۰">
           <h3 class="index-title">چرا زنان در علم؟ (معرفی پادکست)</h3>
           <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
         </div>
 
-        <!-- برای افزودن اپیزود جدید، یک بلوک index-card دیگر مثل بالا کپی کنید
-             و یک modal مشابه #ep0 در پایین صفحه اضافه کنید -->
-      </div>
+        <!-- EP 1 -->
+        <div class="index-card reveal" onclick="openModal('ep1')">
+          <div class="index-num">پرونده ۰۰۱</div>
+          <img src="ep1.jpg" alt="کاور اپیزود ۱">
+          <h3 class="index-title">داستان درخشش آبی (۱) | ماری کوری</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
 
-      <p class="archive-note">اپیزودهای تازه هر هفته به این آرشیو اضافه می‌شوند.</p>
-    </div>
-  </section>
+        <!-- EP 2 -->
+        <div class="index-card reveal" onclick="openModal('ep2')">
+          <div class="index-num">پرونده ۰۰۲</div>
+          <img src="ep2.jpg" alt="کاور اپیزود ۲">
+          <h3 class="index-title">داستان درخشش آبی (۲) | کشف رادیوم</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
 
-  <!-- MISSION / SUPPORT -->
-  <section class="mission" id="mission">
-    <div class="wrap mission-inner">
-      <div class="reveal">
-        <h2>چرا این پرونده‌ها را می‌گشاییم؟</h2>
-        <p>
-          بسیاری از بزرگ‌ترین کشفیات علمی به دست زنانی رقم خورده که تاریخ، عمداً یا از سر عادت، نامشان را کنار گذاشت. هدف ما روایت این داستان‌ها به زبانی ساده و مستند است؛ نه فقط برای ثبت یک نام، بلکه برای نشان‌دادن مسیری که این زنان علی‌رغم همه‌ی موانع پیمودند.
-        </p>
-        <p>
-          اگر داستانی از یک زن دانشمند فراموش‌شده می‌شناسید که باید روایت شود، از طریق اینستاگرام یا تلگرام با ما در میان بگذارید.
-        </p>
-        <div class="social-row">
-          <a href="https://www.instagram.com/women_in_science_podcast" target="_blank" rel="noopener" aria-label="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://t.me/wispodcast" target="_blank" rel="noopener" aria-label="تلگرام"><i class="fa-brands fa-telegram"></i></a>
-          <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" aria-label="اسپاتیفای"><i class="fa-brands fa-spotify"></i></a>
+        <!-- EP 3 -->
+        <div class="index-card reveal" onclick="openModal('ep3')">
+          <div class="index-num">پرونده ۰۰۳</div>
+          <img src="ep3.jpg" alt="کاور اپیزود ۳">
+          <h3 class="index-title">داستان درخشش آبی (۳) | پایان یک افسانه</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 4 -->
+        <div class="index-card reveal" onclick="openModal('ep4')">
+          <div class="index-num">پرونده ۰۰۴</div>
+          <img src="ep4.jpg" alt="کاور اپیزود ۴">
+          <h3 class="index-title">داستان عکس ۵۱ | روزالین فرانکلین</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 5 -->
+        <div class="index-card reveal" onclick="openModal('ep5')">
+          <div class="index-num">پرونده ۰۰۵</div>
+          <img src="ep5.jpg" alt="کاور اپیزود ۵">
+          <h3 class="index-title">در سایه اینشتین | میلوا ماریچ</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 6 -->
+        <div class="index-card reveal" onclick="openModal('ep6')">
+          <div class="index-num">پرونده ۰۰۶</div>
+          <img src="ep6.jpg" alt="کاور اپیزود ۶">
+          <h3 class="index-title">اپیزود ویژه | از کیمیاگری تا کوانتوم</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 7 -->
+        <div class="index-card reveal" onclick="openModal('ep7')">
+          <div class="index-num">پرونده ۰۰۷</div>
+          <img src="ep7.jpg" alt="کاور اپیزود ۷">
+          <h3 class="index-title">بانوی علم و صلح | دوروتی هاجکین</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 8 -->
+        <div class="index-card reveal" onclick="openModal('ep8')">
+          <div class="index-num">پرونده ۰۰۸</div>
+          <img src="ep8.jpg" alt="کاور اپیزود ۸">
+          <h3 class="index-title">چهره‌های پنهان (۱) | کاترین جانسون</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 9 -->
+        <div class="index-card reveal" onclick="openModal('ep9')">
+          <div class="index-num">پرونده ۰۰۹</div>
+          <img src="ep9.jpg" alt="کاور اپیزود ۹">
+          <h3 class="index-title">چهره‌های پنهان (۲) | دوروتی وان</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 10 -->
+        <div class="index-card reveal" onclick="openModal('ep10')">
+          <div class="index-num">پرونده ۰۱۰</div>
+          <img src="ep10.jpg" alt="کاور اپیزود ۱۰">
+          <h3 class="index-title">چهره‌های پنهان (۳) | ماری جکسون</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 11 -->
+        <div class="index-card reveal" onclick="openModal('ep11')">
+          <div class="index-num">پرونده ۰۱۱</div>
+          <img src="ep11.jpg" alt="کاور اپیزود ۱۱">
+          <h3 class="index-title">چهره‌های پنهان (۴) | کریستین داردن</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 12 -->
+        <div class="index-card reveal" onclick="openModal('ep12')">
+          <div class="index-num">پرونده ۰۱۲</div>
+          <img src="ep12.jpg" alt="کاور اپیزود ۱۲">
+          <h3 class="index-title">کشف کروموزوم‌ها | نتی استیونز</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 13 -->
+        <div class="index-card reveal" onclick="openModal('ep13')">
+          <div class="index-num">پرونده ۰۱۳</div>
+          <img src="ep13.jpg" alt="کاور اپیزود ۱۳">
+          <h3 class="index-title">شکافت هسته‌ای | لیز مایتنر</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+
+        <!-- EP 13.5 -->
+        <div class="index-card reveal" onclick="openModal('ep13_5')">
+          <div class="index-num">پرونده ۰۱۳.۵</div>
+          <img src="ep13.5.jpg" alt="کاور اپیزود ۱۳.۵">
+          <h3 class="index-title">پیش‌پرده پرونده استثناها</h3>
+          <span class="index-cta">شنیدن <i class="fa-solid fa-arrow-left"></i></span>
         </div>
       </div>
 
-      <div class="mission-card reveal">
-        <h3><i class="fa-solid fa-heart"></i> حمایت از پادکست</h3>
-        <p>ساخت هر اپیزود به تحقیق، ترجمه و ویرایش زمان زیادی نیاز دارد. حمایت مالی شما این پرونده‌ها را زنده نگه می‌دارد.</p>
-        <a href="https://hamibash.com/wisp" target="_blank" rel="noopener" class="btn btn-coral"><i class="fa-solid fa-mug-hot"></i> حمایت در حامی‌باش</a>
+      <p class="archive-note">اپیزودهای تازه به مرور به این آرشیو اضافه می‌شوند.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="wrap">
+      <div class="about-card reveal">
+        <h2>🌱 درباره پادکست زنان در علم</h2>
+        <p>
+          پادکست «زنان در علم» یک رسانه مستقل است که با هدف بازخوانی تاریخ ناگفته، دستاوردها و چالش‌های زنان دانشمند در طول تاریخ فعالیت می‌کند. تمامی مراحل پژوهش، ترجمه، نگارش و تولید این اثر با دقت و استناد به مراجع معتبر علمی انجام می‌شود تا روایتی شفاف و دقیق از نقش زنان در پیشبرد مرزهای دانش ارائه دهد.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATION SECTION -->
+  <section class="donation-section" id="donate">
+    <div class="wrap donation-inner">
+      <div class="donation-info reveal">
+        <h2>☕ چرا حمایت مالی؟</h2>
+        <p>
+          تولید محتوای کیفیت‌محور و مستقل، نیازمند ابزارهای فنی، زمان پژوهش و دسترسی به منابع علمی است. تمام بخش‌های این پروژه به صورت مستقل پیش می‌رود و حمایت‌های شما صرف موارد زیر می‌شود:
+        </p>
+        <ul class="donation-list">
+          <li><i class="fa-solid fa-check"></i> ارتقاء کیفیت تجهیزات ضبط و ابزارهای فنی</li>
+          <li><i class="fa-solid fa-check"></i> تامین هزینه‌های نگهداری وب‌سایت و میزبان‌های پادکست</li>
+          <li><i class="fa-solid fa-check"></i> صرف زمان بیشتر برای پژوهش و ترجمه دقیق‌تر</li>
+        </ul>
+        <a href="https://hamibash.com/wisp" target="_blank" rel="noopener" class="btn btn-coral"><i class="fa-solid fa-heart"></i> ورود به درگاه پرداخت (حامی‌باش)</a>
+      </div>
+
+      <div class="donation-box reveal">
+        <h3>روش‌های حمایت:</h3>
+        <div class="donation-methods">
+          <div class="method-item">
+            <h4>۱. حمایت مالی تک‌باره</h4>
+            <p>از طریق درگاه پرداخت حامی‌باش برای کمک به هزینه‌های جاری.</p>
+          </div>
+          <div class="method-item">
+            <h4>۲. حمایت ماهانه</h4>
+            <p>برای همراهی مستمر در مسیر پژوهش و تولید اپیزودها.</p>
+          </div>
+          <div class="method-item">
+            <h4>۳. اشتراک‌گذاری</h4>
+            <p>بزرگ‌ترین حمایت، معرفی این محتوا به دوستان و علاقه‌مندان علم است.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT & SOCIALS SECTION -->
+  <section class="connect-section" id="connect">
+    <div class="wrap">
+      <h2 class="connect-title reveal">📲 راه‌های ارتباطی</h2>
+      <div class="connect-grid">
+        <!-- TELEGRAM -->
+        <a href="https://t.me/wispodcast" target="_blank" rel="noopener" class="connect-card reveal">
+          <div class="connect-icon"><i class="fa-brands fa-telegram"></i></div>
+          <h3>کانال تلگرام</h3>
+          <p>تصاویر، فایل‌ها، کتاب‌ها و خلاصه‌ی اپیزودها</p>
+          <span class="connect-link">عضویت در کانال <i class="fa-solid fa-arrow-left"></i></span>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/women_in_science_podcast" target="_blank" rel="noopener" class="connect-card reveal">
+          <div class="connect-icon"><i class="fa-brands fa-instagram"></i></div>
+          <h3>صفحه اینستاگرام</h3>
+          <p>محتوای بصری، ویدیوها و معرفی اپیزودها</p>
+          <span class="connect-link">دنبال کردن <i class="fa-solid fa-arrow-left"></i></span>
+        </a>
+
+        <!-- EMAIL -->
+        <a href="mailto:info@womeninscience.ir" class="connect-card reveal">
+          <div class="connect-icon"><i class="fa-solid fa-envelope"></i></div>
+          <h3>ایمیل ارتباطی</h3>
+          <p>جهت ارسال نظرات، پیشنهادات یا همکاری‌های علمی</p>
+          <span class="connect-link">ارسال ایمیل <i class="fa-solid fa-arrow-left"></i></span>
+        </a>
       </div>
     </div>
   </section>
@@ -481,23 +694,217 @@
     <script>document.write(new Date().getFullYear())</script>
   </footer>
 
-  <!-- MODAL: episode 0 -->
+  <!-- MODALS -->
   <div id="ep0" class="modal">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('ep0')" aria-label="بستن">&times;</button>
+      <button class="modal-close" onclick="closeModal('ep0')">&times;</button>
       <h2>پرونده ۰۰۰: چرا زنان در علم؟</h2>
-      <p>در این پیش‌درآمد، از انگیزه‌ها و مأموریت اصلی پادکست صحبت می‌کنیم.</p>
-
+      <p>در این پیش‌درآمد از انگیزه‌ها و مأموریت اصلی پادکست می‌گوییم.</p>
       <h4>شنیدن این اپیزود:</h4>
       <div class="platform-row">
         <a href="https://castbox.fm/channel/id6681421" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
         <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
         <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
       </div>
+    </div>
+  </div>
 
-      <h4>منابع و مقالات:</h4>
+  <div id="ep1" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep1')">&times;</button>
+      <h2>پرونده ۰۰۱: داستان درخشش آبی (۱) | زندگینامه ماری کوری</h2>
+      <p>در اولین قسمت، با زندگی ماری کوری از کودکی و سال‌های دشوار تحصیلش آشنا می‌شویم. دختری از ورشو که برای رسیدن به رؤیای دانش راهی پاریس شد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/828253283" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000691919857" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep2" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep2')">&times;</button>
+      <h2>پرونده ۰۰۲: داستان درخشش آبی (۲) | زندگینامه ماری کوری</h2>
+      <p>مسیر ماری کوری را از ورودش به فرانسه تا کشف رادیوم و پلونیوم و کسب نخستین جایزه نوبل دنبال می‌کنیم.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/828253284" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000693880161" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep3" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep3')">&times;</button>
+      <h2>پرونده ۰۰۳: داستان درخشش آبی (۳) | زندگینامه ماری کوری</h2>
+      <p>از مرگ پیر کوری تا دریافت نوبل دوم و چالش‌هایی که ماری تا پایان عمر با آن‌ها دست‌و‌پنجه نرم کرد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/828872878" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000717989386" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep4" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep4')">&times;</button>
+      <h2>پرونده ۰۰۴: داستان عکس ۵۱ | زندگینامه روزالین فرانکلین</h2>
+      <p>شیمیدانی که با عکس Photo 51 مسیر کشف ساختار DNA را روشن کرد اما نامش سال‌ها در سایه ماند.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/829136342" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000717989448" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep5" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep5')">&times;</button>
+      <h2>پرونده ۰۰۵: در سایه اینشتین | زندگینامه میلوا ماریچ</h2>
+      <p>فیزیک‌دانی بااستعداد که در کنار اینشتین پژوهش کرد اما تبعیض جنسیتی نام او را به حاشیه راند.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/828253285" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000708754528" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep6" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep6')">&times;</button>
+      <h2>پرونده ۰۰۶: اپیزود ویژه | از کیمیاگری باستان تا فیزیک کوانتوم</h2>
+      <p>سفری در دل قرن‌ها و بازخوانی نقش تاریخی زنانی که در سایه ماندند اما علم را دگرگون کردند.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/829136345" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000718074391" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep7" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep7')">&times;</button>
+      <h2>پرونده ۰۰۷: بانوی علم و صلح | زندگینامه دوروتی هاجکین</h2>
+      <p>تنها زن بریتانیایی برنده نوبل شیمی که ساختار پنی‌سیلین و انسولین را رمزگشایی کرد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/834418580" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000720860626" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep8" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep8')">&times;</button>
+      <h2>پرونده ۰۰۸: چهره‌های پنهان (۱) | زندگینامه کاترین جانسون</h2>
+      <p>ریاضی‌دانی نابغه که با محاسبات دقیقش مسیر فضا را برای پرتاب‌های ناسا هموار کرد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/842657953" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000724932062" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep9" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep9')">&times;</button>
+      <h2>پرونده ۰۰۹: چهره‌های پنهان (۲) | زندگینامه دوروتی وان</h2>
+      <p>نخستین مدیر سیاه‌پوست در ناسا که راه را برای حضور زنان و رنگین‌پوستان در دنیای علم باز کرد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/846692144" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000726855126" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep10" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep10')">&times;</button>
+      <h2>پرونده ۰۱۰: چهره‌های پنهان (۳) | زندگینامه ماری جکسون</h2>
+      <p>اولین مهندس زن آفریقایی-آمریکایی در ناسا که سدهای تبعیض جنسیتی و نژادی را شکست.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/850044083" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000728151146" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep11" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep11')">&times;</button>
+      <h2>پرونده ۰۱۱: چهره‌های پنهان (۴) | زندگینامه کریستین داردن</h2>
+      <p>پژوهشگر برجسته ناسا در زمینه پروازهای مافوق صوت که سقف‌های پیش‌رو را کنار زد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/852008793" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/show/4uQtDJonsC1UlvLufd5UJZ" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000729309565" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep12" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep12')">&times;</button>
+      <h2>پرونده ۰۱۲: کشف کروموزوم‌ها | زندگینامه نتی استیونز</h2>
+      <p>زنی که کشف کرد تعیین جنسیت بر عهده کروموزوم‌هاست اما کشفش سال‌ها نادیده گرفته شد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/860370056" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://spotify.link/BaB1irU8NXb" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000733652244" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep13" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep13')">&times;</button>
+      <h2>پرونده ۰۱۳: شکافت هسته‌ای | زندگینامه لیز مایتنر</h2>
+      <p>پایه‌گذار کشف شکافت هسته‌ای که نوبل از او دریغ شد اما بر صداقت علمی خود ایستاد.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vd/877695935" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/episode/6f2F6VPxCJUgRU4I0EwR12?si=xoJtVwVtSNOiWls_KrtTpA" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/us/podcast/%D8%B2%D9%86%D8%A7%D9%86-%D8%AF%D8%B1-%D8%B9%D9%84%D9%85/id1790139575?i=1000738874294" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ep13_5" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('ep13_5')">&times;</button>
+      <h2>پرونده ۰۱۳.۵: پیش‌پرده پرونده استثناها</h2>
+      <p>بررسی کتاب «استثناها» نوشته کیت زرنیک و افشای تبعیض سیستماتیک در دانشگاه MIT.</p>
+      <h4>شنیدن این اپیزود:</h4>
+      <div class="platform-row">
+        <a href="https://castbox.fm/vi/948558643" target="_blank" rel="noopener" class="btn-platform">کست‌باکس</a>
+        <a href="https://open.spotify.com/episode/54LVFt92Za0rbQv0gX4NsE?si=YGB30YTERIucynlH2KjcxA" target="_blank" rel="noopener" class="btn-platform">اسپاتیفای</a>
+        <a href="https://podcasts.apple.com/co/podcast/قسمت-سیزده-ونیم-پیش-پرده-پرونده-استثناها/id1790139575?i=1000769234200" target="_blank" rel="noopener" class="btn-platform">اپل پادکست</a>
+      </div>
+      <h4>منابع و مراجع:</h4>
       <ul>
-        <li>کتاب The Exceptions نوشته‌ی Kate Zernike</li>
+        <li>کتاب The Exceptions اثر Kate Zernike</li>
       </ul>
     </div>
   </div>
